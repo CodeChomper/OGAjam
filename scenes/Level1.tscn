@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://tilesets/levelTiles16.tres" type="TileSet" id=1]
+
+[node name="Level1" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 48, 48 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 262144, 7, 262145, 20, 262146, 20, 262147, 20, 327680, 25, 327681, 25, 327682, 25, 327683, 25, 327684, 25 )
+
+

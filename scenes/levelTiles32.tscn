@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://textures/scifi_platformTiles_32x32.tex" type="Texture" id=1]
+
+[node name="Node" type="Node"]
+
+[node name="64box_light" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 64, 64, 64 )
+
+[node name="64box" type="Sprite" parent="."]
+
+transform/pos = Vector2( 64, 0 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 128, 64, 64 )
+
+[node name="32box" type="Sprite" parent="."]
+
+transform/pos = Vector2( 128, 32 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 64, 128, 32, 32 )
+
+[node name="32box2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 160, 32 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 64, 160, 32, 32 )
+
+[node name="32box3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 128, 0 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 160, 32, 32 )
+
+[node name="32WhiteTile" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 96 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 192, 32, 32 )
+
+[node name="96WhiteBlackTop" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 224, 96, 96 )
+
+[node name="96WhiteBlackBottom" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 224 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 320, 96, 96 )
+
+[node name="96WireExposed" type="Sprite" parent="."]
+
+transform/pos = Vector2( 96, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 224, 96, 96 )
+
+[node name="96BottomPanel" type="Sprite" parent="."]
+
+transform/pos = Vector2( 96, 224 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 320, 96, 96 )
+
+
