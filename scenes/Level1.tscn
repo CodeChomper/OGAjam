@@ -1,13 +1,29 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=5 format=1]
 
-[ext_resource path="res://tilesets/levelTiles16.tres" type="TileSet" id=1]
+[ext_resource path="res://textures/scifi_platform_BG1.tex" type="Texture" id=1]
+[ext_resource path="res://tilesets/levelTiles48x48.tres" type="TileSet" id=2]
+[ext_resource path="res://tilesets/levelPlatforms48x16.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
 
-[node name="Level1" type="Node"]
+[node name="level1" type="Node"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TextureFrame" type="TextureFrame" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -400.0
+margin/top = 0.0
+margin/right = 2064.0
+margin/bottom = 742.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+
+[node name="bgTiles" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 48, 48 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -20,6 +36,31 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 262144, 7, 262145, 20, 262146, 20, 262147, 20, 327680, 25, 327681, 25, 327682, 25, 327683, 25, 327684, 25 )
+tile_data = IntArray( 524288, 1, 524289, 0, 524290, 0, 524291, 0, 524292, 1, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 11, 524300, 11, 524301, 11, 524302, 11, 589824, 2, 589825, 2, 589826, 2, 589827, 2, 589828, 2, 589829, 2, 589830, 2, 589831, 1, 589832, 2, 589833, 2, 589834, 2, 589835, 11, 589836, 11, 589837, 11, 589838, 11, 655360, 4, 655361, 5, 655362, 5, 655363, 4, 655364, 5, 655365, 5, 655366, 4, 655367, 5, 655368, 5, 655369, 6, 655370, 5, 655371, 11, 655372, 11, 655373, 11, 655374, 11, 720896, 8, 720897, 8, 720898, 8, 720899, 8, 720900, 8, 720901, 8, 720902, 8, 720903, 8, 720904, 8, 720905, 8, 720906, 8, 720907, 11, 720908, 12, 720909, 12, 720910, 12, 786432, 7, 786433, 7, 786434, 7, 786435, 7, 786436, 7, 786437, 7, 786438, 7, 786439, 7, 786440, 7, 786441, 7, 786442, 7, 786443, 7, 786444, 7, 786445, 7, 786446, 7, 786447, 7, 786448, 7, 786449, 7, 786450, 7, 786451, 7, 786452, 7, 851968, 7, 851969, 7, 851970, 7, 851971, 7, 851972, 7, 851973, 7, 851974, 7, 851975, 7, 851976, 7, 851977, 7, 851978, 7, 851979, 7, 851980, 7, 851981, 7, 851982, 7, 851983, 7, 851984, 7, 851985, 7, 851986, 7, 851987, 7, 851988, 7, 917504, 7, 917505, 7, 917506, 7, 917507, 7, 917508, 7, 917509, 7, 917510, 7, 917511, 7, 917512, 7, 917513, 7, 917514, 7, 917515, 7, 917516, 7, 917517, 7, 917518, 7, 917519, 7, 917520, 7, 917521, 7, 917522, 7, 917523, 7, 917524, 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="platforms" type="TileMap" parent="bgTiles"]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell/size = Vector2( 48, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 1507328, 0, 1507329, 0, 1507330, 0, 1507331, 0, 1507332, 0, 1507333, 0, 1507334, 0, 1507335, 0, 1507336, 0, 1507337, 0, 1507338, 0, 1900544, 0, 1900545, 0, 1900546, 0, 1900547, 0, 1900548, 0, 1900549, 0, 1900550, 0, 1900551, 0, 1900552, 0, 1900553, 0, 1900554, 0, 2097165, 2, 2097166, 2, 2162700, 2, 2228236, 2, 2293772, 2, 2359296, 0, 2359297, 0, 2359298, 0, 2359299, 0, 2359300, 0, 2359301, 0, 2359302, 0, 2359303, 0, 2359304, 0, 2359305, 0, 2359306, 0, 2359307, 0, 2359308, 0, 2359309, 0, 2359310, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 544, 144 )
 
 
