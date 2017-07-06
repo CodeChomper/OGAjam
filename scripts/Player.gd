@@ -1,23 +1,26 @@
 extends KinematicBody2D
 
 onready var rayFloor = get_node("rayFloor")
+onready var rayWall = get_node("rayWall")
 onready var onGround = false
 onready var vel = Vector2(0,0)
-onready var WALK_SPEED = 10
-onready var JUMP_SPEED = 70
-onready var GRAVITY = 300
+export var WALK_SPEED = 10
+export var JUMP_SPEED = 170
+export var GRAVITY = 500
 onready var facingLeft = false
 onready var state = "idle"
 onready var anim = get_node("AnimationPlayer")
 
 func _ready():
 	set_fixed_process(true)
+	rayFloor.add_exception(self)
+	rayWall.add_exception(self)
 	pass
 
 func _fixed_process(delta):
 	var left = Input.is_action_pressed("p_left")
 	var right = Input.is_action_pressed("p_right")
-	var up = Input.is_action_pressed("p_up")
+	var jump = Input.is_action_pressed("p_jump")
 	
 	onGround = rayFloor.is_colliding()
 	
@@ -30,6 +33,8 @@ func _fixed_process(delta):
 		flip(false)
 		vel.x += WALK_SPEED
 	vel.x *= 0.9
+	if rayWall.is_colliding():
+		vel.x = 0;
 	
 	if (right or left) and onGround:
 		state = "Walk"
@@ -47,7 +52,7 @@ func _fixed_process(delta):
 		move(motion)
 	
 	# Handle Jump
-	if rayFloor.is_colliding() and up:
+	if rayFloor.is_colliding() and jump:
 		vel.y -= JUMP_SPEED
 	
 	if !onGround:
