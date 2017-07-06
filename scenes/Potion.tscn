@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://scenes/Potion.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Potion.gd" type="Script" id=1]
 [ext_resource path="res://textures/Potions.tex" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -19,16 +19,17 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
-fillLevel = null
-color = null
+fillLevel = 0
+color = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+visibility/visible = false
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="potionSprite" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
 vframes = 5
