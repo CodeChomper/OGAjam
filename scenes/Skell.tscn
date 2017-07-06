@@ -11,7 +11,9 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 20.0
 
-[node name="Skell" type="KinematicBody2D"]
+[node name="Skell" type="KinematicBody2D" groups=[
+"BadGuy",
+]]
 
 transform/pos = Vector2( -0.0626717, 0 )
 input/pickable = false

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var rayFloor = get_node("rayFloor")
 onready var rayWall = get_node("rayWall")
+onready var fbHitBox = get_node("FBHitBox")
 onready var onGround = false
 onready var vel = Vector2(0,0)
 export var WALK_SPEED = 10
@@ -10,11 +11,13 @@ export var GRAVITY = 500
 onready var facingLeft = false
 onready var state = "idle"
 onready var anim = get_node("AnimationPlayer")
+onready var health = 100
 
 func _ready():
 	set_fixed_process(true)
 	rayFloor.add_exception(self)
 	rayWall.add_exception(self)
+	fbHitBox.connect("body_enter",self,"_on_hit")
 	pass
 
 func _fixed_process(delta):
@@ -71,3 +74,7 @@ func flip(left):
 	if left: s.x *= -1
 	else: s.x *= 1
 	set_scale(s)
+
+func _on_hit(body):
+	if body.is_in_group("BadGuy"):
+		print("ouch")

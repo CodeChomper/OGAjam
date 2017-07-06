@@ -11,6 +11,7 @@ var goRight = true
 func _ready():
 	set_fixed_process(true)
 	rayWall.add_exception(self)
+	rayWall.add_exception(get_node("../Player"))
 	rayFloor.add_exception(self)
 	rayForward.add_exception(self)
 	pass
