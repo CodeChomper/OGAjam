@@ -2,10 +2,12 @@ tool
 extends Area2D
 export (int,"empty","low","med","full") var fillLevel = 0 setget fillPotion
 export (int,"green","yellow","red","purple") var color = 0 setget changePotion
-var sprite
+onready var spr = get_node("Sprite")
 
 func _ready():
-	sprite = get_node("potionSprite")
+	fillPotion(fillLevel)
+	changePotion(color)
+	reInit()
 	pass
 
 func fillPotion(val):
@@ -17,8 +19,10 @@ func changePotion(val):
 	reInit()
 
 func reInit():
-	sprite = get_node("potionSprite")
+	if spr == null:
+		print("Sprite is null")
+		return
 	if fillLevel == 0:
-		sprite.set_frame(0)
+		spr.set_frame(0)
 	else:
-		sprite.set_frame(2 + (color * 3) + fillLevel)
+		spr.set_frame(2 + (color * 3) + fillLevel)
