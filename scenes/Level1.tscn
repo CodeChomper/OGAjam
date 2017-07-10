@@ -3,13 +3,14 @@
 [ext_resource path="res://textures/scifi_platform_BG1.tex" type="Texture" id=1]
 [ext_resource path="res://tilesets/levelTilesAll.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Skell.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Hud.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Potion.tscn" type="PackedScene" id=5]
 
 [node name="level1" type="Node"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -87,43 +88,21 @@ tile_data = IntArray( 720916, 9, 720919, 9, 720922, 9, 720925, 9, 720928, 9, 720
 
 transform/pos = Vector2( 394.459, 318.005 )
 
-[node name="Skell" parent="." instance=ExtResource( 4 )]
+[node name="Hud" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 815.949, 299.79 )
+[node name="Potion" parent="." instance=ExtResource( 5 )]
 
-[node name="Skell 2" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 582.864, 268.308 )
-
-[node name="Hud" type="CanvasLayer" parent="."]
-
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-
-[node name="Panel" type="Panel" parent="Hud"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 524.0
-margin/right = 1029.0
-margin/bottom = 601.0
-
-[node name="Potion" parent="Hud/Panel" instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 43.9998, 29.9999 )
-transform/scale = Vector2( 3, 3 )
+transform/pos = Vector2( 480, 312.32 )
 fillLevel = 3
 
-[node name="Potion1" parent="Hud/Panel" instance=ExtResource( 5 )]
+[node name="Potion1" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 986.996, 29.9999 )
-transform/scale = Vector2( 3, 3 )
+transform/pos = Vector2( 530.116, 296.147 )
 fillLevel = 3
-color = 2
+color = 1
+
+[connection signal="potion_pick_up" from="Potion" to="Hud" method="_on_Potion_potion_pick_up"]
+
+[connection signal="potion_pick_up" from="Potion1" to="Hud" method="_on_Potion_potion_pick_up"]
 
 

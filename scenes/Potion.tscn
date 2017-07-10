@@ -6,13 +6,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 3.98763, 3.83394 )
+extents = Vector2( 3.98763, 5.00352 )
 
 [node name="Potion" type="Area2D"]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2.98603 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -22,17 +22,18 @@ script/script = ExtResource( 1 )
 fillLevel = 2
 color = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
 [node name="Sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
 vframes = 5
 hframes = 3
 frame = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 0, 2.98603 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 

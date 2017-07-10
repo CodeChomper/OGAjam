@@ -78,3 +78,7 @@ func flip(left):
 func _on_hit(body):
 	if body.is_in_group("BadGuy"):
 		print("ouch")
+
+func _on_Potion_potion_pick_up(type):
+	print("add to inv ", type)
+	pass # replace with function body
