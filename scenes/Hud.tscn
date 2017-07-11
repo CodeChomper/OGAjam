@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scripts/Hud.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Potion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://images/Potions4X_11.png" type="Texture" id=2]
+[ext_resource path="res://images/Potions4X_00.png" type="Texture" id=3]
+[ext_resource path="res://images/Potions4X_10.png" type="Texture" id=4]
+[ext_resource path="res://images/Potions4X_05.png" type="Texture" id=5]
+[ext_resource path="res://images/Potions4X_04.png" type="Texture" id=6]
+[ext_resource path="res://images/Potions4X_08.png" type="Texture" id=7]
+[ext_resource path="res://images/Potions4X_07.png" type="Texture" id=8]
+[ext_resource path="res://images/Potions4X_14.png" type="Texture" id=9]
+[ext_resource path="res://images/Potions4X_13.png" type="Texture" id=10]
 
 [node name="Hud" type="CanvasLayer"]
 
@@ -152,31 +160,88 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Potion" parent="." instance=ExtResource( 2 )]
+[node name="RedButton" type="TextureButton" parent="."]
 
-transform/pos = Vector2( 70, 550 )
-transform/scale = Vector2( 3, 3 )
-fillLevel = 3
-color = 2
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 46.0
+margin/top = 526.0
+margin/right = 94.0
+margin/bottom = 574.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+textures/normal = ExtResource( 2 )
+textures/pressed = ExtResource( 3 )
+textures/hover = ExtResource( 4 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
-[node name="Potion1" parent="." instance=ExtResource( 2 )]
+[node name="GreenButton" type="TextureButton" parent="."]
 
-transform/pos = Vector2( 180, 550 )
-transform/scale = Vector2( 3, 3 )
-fillLevel = 3
-color = 0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 156.0
+margin/top = 527.0
+margin/right = 204.0
+margin/bottom = 575.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+textures/normal = ExtResource( 5 )
+textures/pressed = ExtResource( 3 )
+textures/hover = ExtResource( 6 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
-[node name="Potion2" parent="." instance=ExtResource( 2 )]
+[node name="YellowButton" type="TextureButton" parent="."]
 
-transform/pos = Vector2( 290, 550 )
-transform/scale = Vector2( 3, 3 )
-fillLevel = 3
-color = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 267.0
+margin/top = 526.0
+margin/right = 315.0
+margin/bottom = 574.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+textures/normal = ExtResource( 7 )
+textures/pressed = ExtResource( 3 )
+textures/hover = ExtResource( 8 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
-[node name="Potion3" parent="." instance=ExtResource( 2 )]
+[node name="PurpleButton" type="TextureButton" parent="."]
 
-transform/pos = Vector2( 400, 550 )
-transform/scale = Vector2( 3, 3 )
-fillLevel = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 376.0
+margin/top = 526.0
+margin/right = 424.0
+margin/bottom = 574.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 3 )
+textures/hover = ExtResource( 10 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[connection signal="pressed" from="RedButton" to="." method="_on_button_pressed" binds= [ 2 ]]
+
+[connection signal="pressed" from="GreenButton" to="." method="_on_button_pressed" binds= [ 0 ]]
+
+[connection signal="pressed" from="YellowButton" to="." method="_on_button_pressed" binds= [ 1 ]]
+
+[connection signal="pressed" from="PurpleButton" to="." method="_on_button_pressed" binds= [ 3 ]]
 
 
