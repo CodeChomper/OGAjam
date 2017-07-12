@@ -1,10 +1,22 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://textures/Animations.tex" type="Texture" id=2]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=3]
 [ext_resource path="res://animations/idle.tres" type="Animation" id=4]
 [ext_resource path="res://animations/jump.tres" type="Animation" id=5]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_00.png" type="Texture" id=6]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_01.png" type="Texture" id=7]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_02.png" type="Texture" id=8]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_03.png" type="Texture" id=9]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_04.png" type="Texture" id=10]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_05.png" type="Texture" id=11]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_06.png" type="Texture" id=12]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_07.png" type="Texture" id=13]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_08.png" type="Texture" id=14]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_09.png" type="Texture" id=15]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_10.png" type="Texture" id=16]
+[ext_resource path="res://images/PotionDrinks/DrinkRed_11.png" type="Texture" id=17]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -16,6 +28,15 @@ height = 19.3371
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.1825, 16.137 )
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "DrinkRed",
+"speed": 5.0
+} ]
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -33,6 +54,7 @@ GRAVITY = 500
 
 [node name="FBHitBox" type="Area2D" parent="."]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.128513, 1.92768 )
@@ -112,5 +134,14 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 1.92767, 0.542149 )
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 3 )
+animation = "DrinkRed"
+
+[connection signal="finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_finished"]
 
 

@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var rayFloor = get_node("rayFloor")
 onready var rayWall = get_node("rayWall")
 onready var fbHitBox = get_node("FBHitBox")
+onready var sprite = get_node("Sprite")
 onready var onGround = false
 onready var vel = Vector2(0,0)
 export var WALK_SPEED = 10
@@ -12,6 +13,7 @@ onready var facingLeft = false
 onready var state = "idle"
 onready var anim = get_node("AnimationPlayer")
 onready var health = 100
+onready var animSprite = get_node("AnimatedSprite")
 
 func _ready():
 	set_fixed_process(true)
@@ -81,4 +83,17 @@ func _on_hit(body):
 
 func _on_Potion_potion_pick_up(type):
 	print("add to inv ", type)
+	pass # replace with function body
+
+func _on_Hud_DrinkRed():
+	print("drinking red")
+	sprite.set_hidden(true)
+	animSprite.set_hidden(false)
+	animSprite.play("DrinkRed")
+
+
+func _on_AnimatedSprite_finished():
+	animSprite.set_hidden(true)
+	sprite.set_hidden(false)
+	
 	pass # replace with function body

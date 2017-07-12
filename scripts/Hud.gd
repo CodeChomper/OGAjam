@@ -34,6 +34,7 @@ func _on_button_pressed(type):
 		inv[type] -=1
 	elif type == 2 and inv[type] > 0:
 		print("Red")
+		emit_signal("DrinkRed")
 		inv[type] -=1
 	elif type == 3 and inv[type] > 0:
 		print("Purple")
