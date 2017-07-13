@@ -5,18 +5,18 @@
 [ext_resource path="res://animations/walk.tres" type="Animation" id=3]
 [ext_resource path="res://animations/idle.tres" type="Animation" id=4]
 [ext_resource path="res://animations/jump.tres" type="Animation" id=5]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_00.png" type="Texture" id=6]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_01.png" type="Texture" id=7]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_02.png" type="Texture" id=8]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_03.png" type="Texture" id=9]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_04.png" type="Texture" id=10]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_05.png" type="Texture" id=11]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_06.png" type="Texture" id=12]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_07.png" type="Texture" id=13]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_08.png" type="Texture" id=14]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_09.png" type="Texture" id=15]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_10.png" type="Texture" id=16]
-[ext_resource path="res://images/PotionDrinks/DrinkRed_11.png" type="Texture" id=17]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_00.tex" type="Texture" id=6]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_01.tex" type="Texture" id=7]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_02.tex" type="Texture" id=8]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_03.tex" type="Texture" id=9]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_04.tex" type="Texture" id=10]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_05.tex" type="Texture" id=11]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_06.tex" type="Texture" id=12]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_07.tex" type="Texture" id=13]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_08.tex" type="Texture" id=14]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_09.tex" type="Texture" id=15]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_10.tex" type="Texture" id=16]
+[ext_resource path="res://textures/DrinkPotions/DrinkRed_11.tex" type="Texture" id=17]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -78,7 +78,7 @@ transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 5
-frame = 3
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -137,8 +137,8 @@ drag_margin/bottom = 0.2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( 1.92767, 0.542149 )
-transform/scale = Vector2( 0.5, 0.5 )
+visibility/visible = false
+transform/pos = Vector2( 2.15806, -0.00918198 )
 frames = SubResource( 3 )
 animation = "DrinkRed"
 

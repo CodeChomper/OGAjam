@@ -88,6 +88,7 @@ func _on_Potion_potion_pick_up(type):
 func _on_Hud_DrinkRed():
 	print("drinking red")
 	sprite.set_hidden(true)
+	animSprite.set_frame(0)
 	animSprite.set_hidden(false)
 	animSprite.play("DrinkRed")
 
