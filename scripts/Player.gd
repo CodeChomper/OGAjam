@@ -14,6 +14,7 @@ onready var state = "idle"
 onready var anim = get_node("AnimationPlayer")
 onready var health = 100
 onready var animSprite = get_node("AnimatedSprite")
+onready var tellaportTimmer = get_node("TellaportTimer")
 
 func _ready():
 	set_fixed_process(true)
@@ -105,6 +106,14 @@ func _on_AnimatedSprite_finished():
 	pass # replace with function body
 
 
-func _on_Computer_body_enter( body ):
+func _on_Tellaport_body_enter( body ):
+	tellaportTimmer.start()
+	animSprite.play("Shocked")
+	animSprite.set_hidden(false)
+	sprite.set_hidden(true)
+	pass # replace with function body
+
+
+func _on_TellaportTimer_timeout():
 	get_tree().change_scene(main.get_next_level())
 	pass # replace with function body

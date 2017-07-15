@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://scripts/InfoATM.gd" type="Script" id=1]
+[ext_resource path="res://images/Kiosk/Kiosk_0.png" type="Texture" id=2]
+[ext_resource path="res://images/Kiosk/Kiosk_1.png" type="Texture" id=3]
+[ext_resource path="res://images/Kiosk/Kiosk_2.png" type="Texture" id=4]
+[ext_resource path="res://images/Kiosk/Kiosk_3.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8.78633, 15.5856 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="InfoATM" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -5.24473, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+text = null
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "default"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -5.24473, 0 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="TextPanel" type="Panel" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -55.0
+margin/top = -68.0
+margin/right = 44.0
+margin/bottom = -44.0
+
+[node name="Panel" type="Panel" parent="TextPanel"]
+
+rect/rotation = -45.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 50.0
+margin/top = 3.0
+margin/right = 79.0
+margin/bottom = 32.0
+
+[node name="Label" type="Label" parent="TextPanel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 4.0
+margin/right = 99.0
+margin/bottom = 51.0
+text = "Get Info Here"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="body_enter" from="." to="." method="_on_InfoATM_body_enter"]
+
+[connection signal="body_exit" from="." to="." method="_on_InfoATM_body_exit"]
+
+

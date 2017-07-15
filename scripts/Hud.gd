@@ -19,6 +19,7 @@ func _ready():
 func _on_Potion_potion_pick_up(type):
 	inv[type] += 1
 	update_labels()
+	sfx.play("bottle")
 	pass # replace with function body
 
 func update_labels():
