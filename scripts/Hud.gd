@@ -4,6 +4,9 @@ var inv = [0,0,0,0]
 onready var labels = [get_node("greenLabel"), get_node("yellowLabel"), get_node("redLabel"), get_node("purpleLabel")]
 onready var keyLabel = get_node("keyLabel")
 onready var panel = get_node("Panel")
+onready var sfx = get_node("SFX")
+onready var potionSoundTimer = get_node("potion_sound_timer")
+
 signal DrinkGreen
 signal DrinkYellow
 signal DrinkRed
@@ -32,16 +35,20 @@ func _on_button_pressed(type):
 	if type == 0 and inv[type] > 0:
 		print("Green")
 		inv[type] -=1
+		potionSoundTimer.start()
 	elif type == 1 and inv[type] > 0:
 		print("Yellow")
 		inv[type] -=1
+		potionSoundTimer.start()
 	elif type == 2 and inv[type] > 0:
 		print("Red")
 		emit_signal("DrinkRed")
 		inv[type] -=1
+		potionSoundTimer.start()
 	elif type == 3 and inv[type] > 0:
 		print("Purple")
 		inv[type] -=1
+		potionSoundTimer.start()
 	else:
 		print("You do not have that in inventory")
 	
@@ -61,5 +68,11 @@ func _on_Door_use_key(door):
 	if keys > 0:
 		door.state = 0
 		keys -= 1
+		sfx.play("useKey")
 		update_labels()
+	pass # replace with function body
+
+
+func _on_potion_sound_timer_timeout():
+	sfx.play("usePotion")
 	pass # replace with function body

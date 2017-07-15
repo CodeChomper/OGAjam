@@ -31,20 +31,20 @@ func _fixed_process(delta):
 	
 	# Handle Movement
 	gravity(delta)
-	if left:
+	if left and state != "drinking":
 		flip(true)
 		vel.x -= WALK_SPEED
-	if right:
+	if right and state != "drinking":
 		flip(false)
 		vel.x += WALK_SPEED
 	vel.x *= 0.9
 	if rayWall.is_colliding():
 		vel.x = 0;
 	
-	if (right or left) and onGround:
+	if (right or left) and onGround and state != "drinking":
 		state = "Walk"
 	
-	if onGround and abs(vel.x) < 3:
+	if onGround and state != "drinking" and abs(vel.x) < 3:
 		state = "idle"
 	
 	var motion = vel * delta
@@ -86,15 +86,25 @@ func _on_Potion_potion_pick_up(type):
 	pass # replace with function body
 
 func _on_Hud_DrinkRed():
-	print("drinking red")
 	sprite.set_hidden(true)
 	animSprite.set_frame(0)
 	animSprite.set_hidden(false)
 	animSprite.play("DrinkRed")
+	state = "drinking"
 
 
 func _on_AnimatedSprite_finished():
 	animSprite.set_hidden(true)
+	animSprite.stop()
 	sprite.set_hidden(false)
+	print(state)
+	if animSprite.get_animation() == "DrinkRed":
+		print("reload scene")
+		get_tree().reload_current_scene()
 	
+	pass # replace with function body
+
+
+func _on_Computer_body_enter( body ):
+	get_tree().change_scene(main.get_next_level())
 	pass # replace with function body

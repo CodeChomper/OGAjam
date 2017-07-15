@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://textures/scifi_platform_BG1.tex" type="Texture" id=1]
 [ext_resource path="res://tilesets/levelTilesAll.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Key.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/Hud.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Potion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Computer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Key.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Hud.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Potion.tscn" type="PackedScene" id=8]
 
 [node name="level1" type="Node"]
 
@@ -26,7 +27,6 @@ scroll/ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-visibility/visible = false
 transform/pos = Vector2( 32, 0 )
 motion/scale = Vector2( 0.5, 0 )
 motion/offset = Vector2( 0, 0 )
@@ -84,34 +84,40 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 720916, 9, 720919, 9, 720922, 9, 720925, 9, 720928, 9, 720931, 9, 720934, 9, 786452, 39, 852030, 1, 983060, 39, 983102, 1, 1114150, 22, 1114174, 1, 1179668, 39, 1179683, 22, 1179686, 22, 1245216, 22, 1245219, 22, 1245222, 22, 1245246, 1, 1310749, 22, 1310752, 22, 1310755, 22, 1310758, 22, 1310767, 9, 1310770, 9, 1310773, 9, 1376276, 22, 1376279, 22, 1376282, 22, 1376285, 22, 1376288, 22, 1376291, 22, 1376294, 22, 1376297, 39, 1376318, 0, 1507390, 0, 1572905, 39, 1638462, 0, 1769513, 39, 1769534, 39, 1966121, 39, 2162729, 9, 2162732, 9, 2162735, 9, 2162738, 9, 2162741, 9, 2162744, 9, 2162747, 9, 2162750, 9, 2162753, 9, 2162756, 9, 2162759, 9 )
+tile_data = IntArray( 720916, 9, 720919, 9, 720922, 9, 720925, 9, 720928, 9, 720931, 9, 720934, 9, 786452, 39, 983060, 39, 1114150, 22, 1179668, 39, 1179683, 22, 1179686, 22, 1245216, 22, 1245219, 22, 1245222, 22, 1310749, 22, 1310752, 22, 1310755, 22, 1310758, 22, 1310767, 9, 1310770, 9, 1310773, 9, 1376276, 22, 1376279, 22, 1376282, 22, 1376285, 22, 1376288, 22, 1376291, 22, 1376294, 22, 1376297, 39, 1572905, 39, 1703998, 9, 1704001, 9, 1704004, 9, 1704007, 9, 1769513, 39, 1769534, 39, 1966121, 39, 2162729, 9, 2162732, 9, 2162735, 9, 2162738, 9, 2162741, 9, 2162744, 9, 2162747, 9, 2162750, 9, 2162753, 9, 2162756, 9, 2162759, 9 )
 
-[node name="Door" parent="." instance=ExtResource( 3 )]
+[node name="Computer" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1113.42, 495.217 )
+
+[node name="Door" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 994.826, 503.577 )
 state = 1
 
-[node name="Key" parent="." instance=ExtResource( 4 )]
+[node name="Key" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 817.342, 301.213 )
+transform/pos = Vector2( 778.778, 299.122 )
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Player" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 383.505, 294.05 )
 
-[node name="Hud" parent="." instance=ExtResource( 6 )]
+[node name="Hud" parent="." instance=ExtResource( 7 )]
 
-[node name="Potion" parent="." instance=ExtResource( 7 )]
+[node name="Potion" parent="." instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 480, 312.32 )
+transform/pos = Vector2( 676.62, 515.693 )
 fillLevel = 3
 color = 2
 
-[node name="Potion1" parent="." instance=ExtResource( 7 )]
+[node name="Potion1" parent="." instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 530.116, 296.147 )
+transform/pos = Vector2( 632.994, 263.178 )
 fillLevel = 3
 color = 2
+
+[connection signal="body_enter" from="Computer" to="Player" method="_on_Computer_body_enter"]
 
 [connection signal="use_key" from="Door" to="Hud" method="_on_Door_use_key"]
 
