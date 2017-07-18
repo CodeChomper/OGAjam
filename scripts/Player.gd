@@ -15,6 +15,8 @@ onready var anim = get_node("AnimationPlayer")
 onready var health = 100
 onready var animSprite = get_node("AnimatedSprite")
 onready var tellaportTimmer = get_node("TellaportTimer")
+onready var camera = get_node("Camera2D")
+onready var powerUpTimer = get_node("PowerUpTimer")
 
 func _ready():
 	set_fixed_process(true)
@@ -27,6 +29,9 @@ func _fixed_process(delta):
 	var left = Input.is_action_pressed("p_left")
 	var right = Input.is_action_pressed("p_right")
 	var jump = Input.is_action_pressed("p_jump")
+	
+	if health <=0 or get_pos().y > camera.get_pos().y + 800:
+		get_tree().reload_current_scene()
 	
 	onGround = rayFloor.is_colliding()
 	
@@ -103,6 +108,12 @@ func _on_AnimatedSprite_finished():
 		print("reload scene")
 		get_tree().reload_current_scene()
 	
+	#do yellow effects!
+	if animSprite.get_animation() == "DrinkYellow":
+		JUMP_SPEED = 270
+		state = "idle"
+		powerUpTimer.start()
+	
 	pass # replace with function body
 
 
@@ -116,4 +127,18 @@ func _on_Tellaport_body_enter( body ):
 
 func _on_TellaportTimer_timeout():
 	get_tree().change_scene(main.get_next_level())
+	pass # replace with function body
+
+
+func _on_Hud_DrinkYellow():
+	sprite.set_hidden(true)
+	animSprite.set_frame(0)
+	animSprite.set_hidden(false)
+	animSprite.play("DrinkYellow")
+	state = "drinking"
+
+
+func _on_PowerUpTimer_timeout():
+	JUMP_SPEED = 170
+	WALK_SPEED = 10
 	pass # replace with function body

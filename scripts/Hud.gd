@@ -14,6 +14,7 @@ signal DrinkPurple
 var keys = 0
 
 func _ready():
+	self.set_offset(Vector2(0,0))
 	pass
 
 func _on_Potion_potion_pick_up(type):
@@ -35,10 +36,12 @@ func _input_event(viewport, event, shape_idx):
 func _on_button_pressed(type):
 	if type == 0 and inv[type] > 0:
 		print("Green")
+		emit_signal("DrinkGreen")
 		inv[type] -=1
 		potionSoundTimer.start()
 	elif type == 1 and inv[type] > 0:
 		print("Yellow")
+		emit_signal("DrinkYellow")
 		inv[type] -=1
 		potionSoundTimer.start()
 	elif type == 2 and inv[type] > 0:
@@ -48,6 +51,7 @@ func _on_button_pressed(type):
 		potionSoundTimer.start()
 	elif type == 3 and inv[type] > 0:
 		print("Purple")
+		emit_signal("DrinkPurple")
 		inv[type] -=1
 		potionSoundTimer.start()
 	else:

@@ -108,6 +108,8 @@ transform/pos = Vector2( 770.817, 284.527 )
 
 [node name="Hud" parent="." instance=ExtResource( 6 )]
 
+offset = Vector2( 0, -800 )
+
 [node name="Potion" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 676.62, 515.693 )

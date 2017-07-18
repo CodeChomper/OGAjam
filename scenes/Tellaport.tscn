@@ -26,7 +26,7 @@ extents = Vector2( 3.22701, 28.4109 )
 [sub_resource type="SampleLibrary" id=4]
 
 samples/tellaport = {
-"db": 0.0,
+"db": -10.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 3 )
