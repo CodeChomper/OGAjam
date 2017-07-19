@@ -101,7 +101,9 @@ transform/pos = Vector2( 364.795, 310.652 )
 
 transform/pos = Vector2( 409.579, 327.801 )
 fillLevel = 3
-color = 2
+color = 0
+
+[connection signal="DrinkGreen" from="Hud" to="Player" method="_on_Hud_DrinkGreen"]
 
 [connection signal="DrinkRed" from="Hud" to="Player" method="_on_Hud_DrinkRed"]
 

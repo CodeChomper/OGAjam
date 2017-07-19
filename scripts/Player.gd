@@ -142,3 +142,11 @@ func _on_PowerUpTimer_timeout():
 	JUMP_SPEED = 170
 	WALK_SPEED = 10
 	pass # replace with function body
+
+
+func _on_Hud_DrinkGreen():
+	sprite.set_hidden(true)
+	animSprite.set_frame(0)
+	animSprite.set_hidden(false)
+	animSprite.play("DrinkGreen")
+	state = "drinking"
