@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var rayFloor = get_node("rayFloor")
+onready var rayFloor1 = get_node("rayFloor1")
 onready var rayWall = get_node("rayWall")
 onready var fbHitBox = get_node("FBHitBox")
 onready var sprite = get_node("Sprite")
@@ -33,7 +34,17 @@ func _fixed_process(delta):
 	if health <=0 or get_pos().y > camera.get_pos().y + 800:
 		get_tree().reload_current_scene()
 	
-	onGround = rayFloor.is_colliding()
+	onGround = rayFloor.is_colliding() or rayFloor1.is_colliding()
+	
+	if rayFloor.is_colliding():
+		if rayFloor.get_collider().is_in_group("BadGuy"):
+			print("steped on head")
+			rayFloor.get_collider().health = 0
+	
+	if rayFloor1.is_colliding():
+		if rayFloor1.get_collider().is_in_group("BadGuy"):
+			print("steped on head")
+			rayFloor1.get_collider().health = 0
 	
 	# Handle Movement
 	gravity(delta)
@@ -124,10 +135,11 @@ func _on_AnimatedSprite_finished():
 
 
 func _on_Tellaport_body_enter( body ):
-	tellaportTimmer.start()
-	animSprite.play("Shocked")
-	animSprite.set_hidden(false)
-	sprite.set_hidden(true)
+	if body.get_name() == "Player":
+		tellaportTimmer.start()
+		animSprite.play("Shocked")
+		animSprite.set_hidden(false)
+		sprite.set_hidden(true)
 	pass # replace with function body
 
 

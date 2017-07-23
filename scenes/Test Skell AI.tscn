@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://tilesets/levelTilesAll.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Skell.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 
 [node name="Test Skell AI" type="Node"]
 
@@ -21,10 +22,14 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 851968, 9, 851974, 9, 851980, 9, 851986, 9 )
+tile_data = IntArray( 589845, 0, 720921, 2, 851974, 9, 851980, 9, 851986, 9, 851992, 9, 851998, 9, 852004, 9 )
 
 [node name="Skell" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 83.88, 75.8336 )
+transform/pos = Vector2( 230.951, 82.2247 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 121.315, 77.7267 )
 
 

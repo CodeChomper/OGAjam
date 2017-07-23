@@ -8,6 +8,7 @@ func _ready():
 
 func _on_key_touch(body):
 	if body.get_name() == "Player":
+		clear_shapes()
 		print("pick up key")
 		keySample.play("key")
 		emit_signal("key_pick_up")

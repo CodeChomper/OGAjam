@@ -8,5 +8,6 @@ func _ready():
 
 
 func _on_Tellaport_body_enter( body ):
-	sfx.play("tellaport")
+	if body.get_name() == "Player":
+		sfx.play("tellaport")
 	pass # replace with function body
