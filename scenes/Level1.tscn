@@ -112,7 +112,7 @@ offset = Vector2( 0, -800 )
 
 [node name="Potion" parent="." instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 676.62, 515.693 )
+transform/pos = Vector2( 484.216, 311.642 )
 fillLevel = 3
 color = 2
 

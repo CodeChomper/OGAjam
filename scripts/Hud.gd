@@ -6,16 +6,26 @@ onready var keyLabel = get_node("keyLabel")
 onready var panel = get_node("Panel")
 onready var sfx = get_node("SFX")
 onready var potionSoundTimer = get_node("potion_sound_timer")
+onready var powerUpTimeLeft = get_node("PowerUpTImeLeft")
 
 signal DrinkGreen
 signal DrinkYellow
 signal DrinkRed
 signal DrinkPurple
 var keys = 0
+var pTimeLeft = 0
 
 func _ready():
 	self.set_offset(Vector2(0,0))
+	set_process(true)
 	pass
+
+func _process(delta):
+	if pTimeLeft > 0:
+		pTimeLeft = pTimeLeft - delta
+	else:
+		pTimeLeft = 0
+	powerUpTimeLeft.set_text(str(round(pTimeLeft)))
 
 func _on_Potion_potion_pick_up(type):
 	inv[type] += 1
@@ -34,6 +44,7 @@ func _input_event(viewport, event, shape_idx):
         print("Clicked")
 
 func _on_button_pressed(type):
+	pTimeLeft = 12
 	if type == 0 and inv[type] > 0:
 		print("Green")
 		emit_signal("DrinkGreen")
@@ -55,6 +66,7 @@ func _on_button_pressed(type):
 		inv[type] -=1
 		potionSoundTimer.start()
 	else:
+		pTimeLeft = 0
 		print("You do not have that in inventory")
 	
 	#need to reset focus

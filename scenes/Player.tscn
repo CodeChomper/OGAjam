@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=1]
+[gd_scene load_steps=68 format=1]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://textures/Animations.tex" type="Texture" id=2]
@@ -41,14 +41,26 @@
 [ext_resource path="res://images/PotionDrinks/DrinkYellow_09.png" type="Texture" id=39]
 [ext_resource path="res://images/PotionDrinks/DrinkYellow_10.png" type="Texture" id=40]
 [ext_resource path="res://images/PotionDrinks/DrinkYellow_11.png" type="Texture" id=41]
-[ext_resource path="res://images/Shocked/Shocked_0.png" type="Texture" id=42]
-[ext_resource path="res://images/Shocked/Shocked_1.png" type="Texture" id=43]
-[ext_resource path="res://images/Shocked/Shocked_2.png" type="Texture" id=44]
-[ext_resource path="res://images/Shocked/Shocked_3.png" type="Texture" id=45]
-[ext_resource path="res://images/Shocked/Shocked_4.png" type="Texture" id=46]
-[ext_resource path="res://images/Shocked/Shocked_5.png" type="Texture" id=47]
-[ext_resource path="res://images/Shocked/Shocked_6.png" type="Texture" id=48]
-[ext_resource path="res://Sounds/cloth.smp" type="Sample" id=49]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_00.png" type="Texture" id=42]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_01.png" type="Texture" id=43]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_02.png" type="Texture" id=44]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_03.png" type="Texture" id=45]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_04.png" type="Texture" id=46]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_05.png" type="Texture" id=47]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_06.png" type="Texture" id=48]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_07.png" type="Texture" id=49]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_08.png" type="Texture" id=50]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_09.png" type="Texture" id=51]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_10.png" type="Texture" id=52]
+[ext_resource path="res://images/PotionDrinks/DrinkPurple_11.png" type="Texture" id=53]
+[ext_resource path="res://images/Shocked/Shocked_0.png" type="Texture" id=54]
+[ext_resource path="res://images/Shocked/Shocked_1.png" type="Texture" id=55]
+[ext_resource path="res://images/Shocked/Shocked_2.png" type="Texture" id=56]
+[ext_resource path="res://images/Shocked/Shocked_3.png" type="Texture" id=57]
+[ext_resource path="res://images/Shocked/Shocked_4.png" type="Texture" id=58]
+[ext_resource path="res://images/Shocked/Shocked_5.png" type="Texture" id=59]
+[ext_resource path="res://images/Shocked/Shocked_6.png" type="Texture" id=60]
+[ext_resource path="res://Sounds/cloth.smp" type="Sample" id=61]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -112,7 +124,12 @@ animations = [ {
 "name": "DrinkYellow",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
+"loop": true,
+"name": "DrinkPurple",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ) ],
 "loop": true,
 "name": "Shocked",
 "speed": 11.0
@@ -124,7 +141,7 @@ samples/walk = {
 "db": -12.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 49 )
+"sample": ExtResource( 61 )
 }
 
 [node name="Player" type="KinematicBody2D"]

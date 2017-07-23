@@ -114,6 +114,12 @@ func _on_AnimatedSprite_finished():
 		state = "idle"
 		powerUpTimer.start()
 	
+	#do green effects!
+	if animSprite.get_animation() == "DrinkGreen":
+		WALK_SPEED = 20
+		state = "idle"
+		powerUpTimer.start()
+	
 	pass # replace with function body
 
 
