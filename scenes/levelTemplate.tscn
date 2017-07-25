@@ -106,7 +106,15 @@ transform/pos = Vector2( 409.579, 327.801 )
 fillLevel = 3
 color = 2
 
+[connection signal="DrinkGreen" from="Hud" to="Player" method="_on_Hud_DrinkGreen"]
+
+[connection signal="DrinkPurple" from="Hud" to="Player" method="_on_Hud_DrinkPurple"]
+
 [connection signal="DrinkRed" from="Hud" to="Player" method="_on_Hud_DrinkRed"]
+
+[connection signal="DrinkYellow" from="Hud" to="Player" method="_on_Hud_DrinkYellow"]
+
+[connection signal="Health_Change" from="Player" to="Hud" method="_on_Player_Health_Change"]
 
 [connection signal="potion_pick_up" from="Potion" to="Hud" method="_on_Potion_potion_pick_up"]
 

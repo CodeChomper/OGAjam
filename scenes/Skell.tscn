@@ -104,7 +104,7 @@ autostart = false
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
-config/polyphony = 1
+config/polyphony = 5
 config/samples = SubResource( 4 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0

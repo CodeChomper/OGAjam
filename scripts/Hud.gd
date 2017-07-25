@@ -1,12 +1,15 @@
 extends CanvasLayer
 var POTION_TYPES = ["Green", "Yellow", "Red", "Purple"]
-var inv = [0,0,0,0]
 onready var labels = [get_node("greenLabel"), get_node("yellowLabel"), get_node("redLabel"), get_node("purpleLabel")]
 onready var keyLabel = get_node("keyLabel")
 onready var panel = get_node("Panel")
 onready var sfx = get_node("SFX")
 onready var potionSoundTimer = get_node("potion_sound_timer")
 onready var powerUpTimeLeft = get_node("PowerUpTImeLeft")
+onready var heart1 = get_node("Heart1")
+onready var heart2 = get_node("Heart2")
+onready var heart3 = get_node("Heart3")
+onready var heart4 = get_node("Heart4")
 
 signal DrinkGreen
 signal DrinkYellow
@@ -18,6 +21,7 @@ var pTimeLeft = 0
 func _ready():
 	self.set_offset(Vector2(0,0))
 	set_process(true)
+	update_labels()
 	pass
 
 func _process(delta):
@@ -28,14 +32,14 @@ func _process(delta):
 	powerUpTimeLeft.set_text(str(round(pTimeLeft)))
 
 func _on_Potion_potion_pick_up(type):
-	inv[type] += 1
+	main.inv[type] += 1
 	update_labels()
 	sfx.play("bottle")
 	pass # replace with function body
 
 func update_labels():
 	for i in range(labels.size()):
-		labels[i].set_text(str(inv[i]))
+		labels[i].set_text(str(main.inv[i]))
 	keyLabel.set_text(str(keys))
 
 func _input_event(viewport, event, shape_idx):
@@ -45,25 +49,25 @@ func _input_event(viewport, event, shape_idx):
 
 func _on_button_pressed(type):
 	pTimeLeft = 12
-	if type == 0 and inv[type] > 0:
+	if type == 0 and main.inv[type] > 0:
 		print("Green")
 		emit_signal("DrinkGreen")
-		inv[type] -=1
+		main.inv[type] -=1
 		potionSoundTimer.start()
-	elif type == 1 and inv[type] > 0:
+	elif type == 1 and main.inv[type] > 0:
 		print("Yellow")
 		emit_signal("DrinkYellow")
-		inv[type] -=1
+		main.inv[type] -=1
 		potionSoundTimer.start()
-	elif type == 2 and inv[type] > 0:
+	elif type == 2 and main.inv[type] > 0:
 		print("Red")
 		emit_signal("DrinkRed")
-		inv[type] -=1
+		main.inv[type] -=1
 		potionSoundTimer.start()
-	elif type == 3 and inv[type] > 0:
+	elif type == 3 and main.inv[type] > 0:
 		print("Purple")
 		emit_signal("DrinkPurple")
-		inv[type] -=1
+		main.inv[type] -=1
 		potionSoundTimer.start()
 	else:
 		pTimeLeft = 0
@@ -93,3 +97,28 @@ func _on_Door_use_key(door):
 func _on_potion_sound_timer_timeout():
 	sfx.play("usePotion")
 	pass # replace with function body
+
+
+func _on_Player_Health_Change(health):
+	if health == 100:
+		heart1.play("Red")
+		heart2.play("Red")
+		heart3.play("Red")
+		heart4.play("Red")
+	elif health == 75:
+		heart1.play("Red")
+		heart2.play("Red")
+		heart3.play("Red")
+		heart4.play("Grey")
+	elif health == 50:
+		heart1.play("Red")
+		heart2.play("Red")
+		heart3.play("Grey")
+		heart4.play("Grey")
+	elif health == 25:
+		heart1.play("Red")
+		heart2.play("Grey")
+		heart3.play("Grey")
+		heart4.play("Grey")
+	else:
+		print("no change")

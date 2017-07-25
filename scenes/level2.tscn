@@ -138,6 +138,10 @@ transform/pos = Vector2( 706.641, 503.776 )
 
 transform/pos = Vector2( 364.795, 310.652 )
 
+[connection signal="DrinkGreen" from="Hud" to="Player" method="_on_Hud_DrinkGreen"]
+
+[connection signal="DrinkPurple" from="Hud" to="Player" method="_on_Hud_DrinkPurple"]
+
 [connection signal="DrinkRed" from="Hud" to="Player" method="_on_Hud_DrinkRed"]
 
 [connection signal="DrinkYellow" from="Hud" to="Player" method="_on_Hud_DrinkYellow"]
@@ -151,5 +155,7 @@ transform/pos = Vector2( 364.795, 310.652 )
 [connection signal="key_pick_up" from="Key" to="Hud" method="_on_key_pick_up"]
 
 [connection signal="body_enter" from="Tellaport" to="Player" method="_on_Tellaport_body_enter"]
+
+[connection signal="Health_Change" from="Player" to="Hud" method="_on_Player_Health_Change"]
 
 

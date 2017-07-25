@@ -1,6 +1,7 @@
 extends Node
-var levels = ["scenes/level1.tscn","scenes/level2.tscn","scenes/level3.tscn"]
+var levels = ["scenes/level1.tscn","scenes/level2.tscn","scenes/level3.tscn","scenes/level4.tscn"]
 var curLevel = 0
+var inv = [0,0,0,0]
 
 func _ready():
 	# Called every time the node is added to the scene.

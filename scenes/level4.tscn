@@ -1,0 +1,172 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://scripts/LevelStart.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Hud.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/scifi_platform_BG1.tex" type="Texture" id=3]
+[ext_resource path="res://tilesets/levelTilesAll.tres" type="TileSet" id=4]
+[ext_resource path="res://images/Tellaport.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Key.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Potion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Tellaport.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Skell.tscn" type="PackedScene" id=11]
+
+[node name="level1" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="Hud" parent="." instance=ExtResource( 2 )]
+
+offset = Vector2( 0, -800 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+visibility/visible = false
+transform/pos = Vector2( 32, 0 )
+motion/scale = Vector2( 0.5, 0 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureFrame" type="TextureFrame" parent="ParallaxBackground/ParallaxLayer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 1
+margin/left = -427.0
+margin/top = -145.0
+margin/right = 3317.0
+margin/bottom = 1055.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="BG" type="TileMap" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 48, 48 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -21, 0, 131084, 15, 131085, 15, 131086, 15, 131087, 15, 131088, 15, 131089, 15, 196620, 15, 196621, 15, 196622, 15, 196623, 15, 196624, 15, 196625, 15, 262150, 15, 262151, 15, 262152, 15, 262153, 15, 262154, 15, 262155, 15, 262156, 15, 262157, 15, 262158, 15, 262159, 15, 262160, 15, 262161, 15, 327686, 15, 327687, 15, 327688, 15, 327689, 15, 327690, 15, 327691, 15, 327692, 15, 327693, 15, 327694, 15, 327695, 15, 327696, 15, 327697, 15, 327706, 6, 327707, 5, 327708, 5, 327709, 5, 327710, 6, 327711, 5, 327712, 5, 327713, 5, 327714, 6, 327715, 5, 393222, 15, 393223, 15, 393224, 15, 393225, 15, 393226, 15, 393227, 15, 393228, 15, 393229, 15, 393230, 15, 393231, 15, 393232, 15, 393233, 15, 393242, 7, 393243, 8, 393244, 7, 393245, 7, 393246, 7, 393247, 8, 393248, 8, 393249, 7, 393250, 7, 393251, 7, 458758, 40, 458759, 40, 458760, 40, 458761, 40, 458762, 40, 458763, 40, 458764, 40, 458765, 40, 458766, 40, 458767, 40, 458768, 40, 458769, 40, 458774, 19, 458775, 19, 458776, 19, 458777, 19, 458778, 40, 458779, 40, 458780, 40, 458781, 40, 458782, 40, 458783, 40, 458784, 40, 458785, 40, 458786, 40, 458787, 40, 524294, 40, 524295, 40, 524296, 40, 524297, 40, 524298, 40, 524299, 40, 524300, 40, 524301, 40, 524302, 40, 524303, 40, 524304, 40, 524305, 40, 524310, 19, 524311, 19, 524312, 19, 524313, 19, 524314, 40, 524315, 40, 524316, 40, 524317, 40, 524318, 40, 524319, 40, 524320, 40, 524321, 40, 524322, 40, 524323, 40, 589830, 40, 589831, 40, 589832, 40, 589833, 40, 589834, 40, 589835, 40, 589836, 40, 589837, 40, 589838, 40, 589839, 40, 589840, 40, 589841, 40, 589846, 19, 589847, 19, 589848, 19, 589849, 19, 589850, 40, 589851, 40, 589852, 40, 589853, 40, 589854, 40, 589855, 40, 589856, 40, 589857, 40, 589858, 40, 589859, 40, 655366, 40, 655367, 40, 655368, 40, 655369, 40, 655370, 40, 655371, 40, 655372, 40, 655373, 40, 655374, 40, 655375, 40, 655376, 40, 655377, 40, 655380, 5, 655381, 5, 655382, 5, 655383, 40, 655384, 40, 655385, 40, 655386, 40, 655387, 40, 655388, 40, 655389, 40, 655390, 40, 655391, 40, 655392, 40, 655393, 40, 655394, 40, 655395, 40, 720902, 40, 720903, 40, 720904, 40, 720905, 40, 720906, 40, 720907, 40, 720908, 40, 720909, 40, 720910, 40, 720911, 40, 720912, 40, 720913, 40, 720916, 40, 720917, 40, 720918, 40, 720919, 40, 720920, 40, 720921, 40, 720922, 40, 720923, 40, 720924, 40, 720925, 40, 720926, 40, 720927, 40, 720928, 40, 720929, 40, 720930, 40, 720931, 40, 786438, 40, 786439, 40, 786440, 40, 786441, 40, 786442, 40, 786443, 40, 786444, 40, 786445, 40, 786446, 40, 786447, 40, 786448, 40, 786449, 40, 786452, 40, 786453, 40, 786454, 40, 786455, 40, 786456, 40, 786457, 40, 786458, 40, 786459, 40, 786460, 40, 786461, 40, 786462, 40, 786463, 40, 786464, 40, 786465, 40, 786466, 40, 786467, 40, 851974, 40, 851975, 40, 851976, 40, 851977, 40, 851978, 40, 851979, 40, 851980, 40, 851981, 40, 851982, 40, 851983, 40, 851984, 40, 851985, 40, 851988, 40, 851989, 40, 851990, 40, 851991, 40, 851992, 40, 851993, 40, 851994, 40, 851995, 40, 851996, 40, 851997, 40, 851998, 40, 851999, 40, 852000, 40, 852001, 40, 852002, 40, 852003, 40, 917510, 40, 917511, 40, 917512, 40, 917513, 40, 917514, 40, 917515, 40, 917516, 40, 917517, 40, 917518, 40, 917519, 40, 917520, 40, 917521, 40, 917524, 40, 917525, 40, 917526, 40, 917527, 40, 917528, 40, 917529, 40, 917530, 40, 917531, 40, 917532, 40, 917533, 40, 917534, 40, 917535, 40, 917536, 40, 917537, 40, 917538, 40, 917539, 40, 983046, 40, 983047, 40, 983048, 40, 983049, 40, 983050, 40, 983051, 40, 983052, 40, 983053, 40, 983054, 40, 983055, 40, 983056, 40, 983057, 40, 983060, 40, 983061, 40, 983062, 40, 983063, 40, 983064, 40, 983065, 40, 983066, 40, 983067, 40, 983068, 40, 983069, 40, 983070, 40, 983071, 40, 983072, 40, 983073, 40, 983074, 40, 983075, 40 )
+
+[node name="MidGround" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 327718, 9, 327721, 9, 327724, 9, 327727, 9, 327730, 9, 327733, 9, 393254, 39, 589847, 0, 589862, 39, 720916, 9, 720919, 9, 720922, 9, 720925, 9, 720928, 9, 720931, 9, 786452, 39, 852009, 21, 852012, 21, 852015, 21, 852018, 21, 852021, 21, 852024, 21, 852027, 21, 917584, 9, 917587, 9, 917590, 9, 917593, 9, 917596, 9, 917599, 9, 917602, 9, 917605, 9, 917608, 9, 917611, 9, 917614, 39, 983060, 39, 983120, 39, 1114144, 21, 1114147, 21, 1114150, 21, 1114222, 39, 1179668, 39, 1310830, 39, 1376276, 9, 1376279, 9, 1376282, 9, 1376285, 9, 1376288, 9, 1376291, 9, 1376294, 9, 1376297, 9, 1376300, 9, 1376303, 9, 1376306, 9, 1376309, 9, 1376312, 39, 1376324, 9, 1376327, 9, 1376330, 9, 1376333, 9, 1376336, 9, 1376339, 9, 1376342, 9, 1376345, 9, 1376348, 9, 1376351, 9, 1376354, 9, 1376357, 9, 1376360, 9, 1376363, 9, 1441860, 39, 1441872, 39, 1507438, 39, 1572920, 39, 1572932, 39, 1572944, 39, 1704046, 39, 1769528, 39, 1769552, 39, 1900654, 39, 1966136, 39, 1966142, 9, 1966145, 9, 1966148, 9, 1966151, 9, 1966154, 9, 1966157, 9, 1966160, 39, 2031678, 39, 2097262, 39, 2162744, 39, 2162768, 39, 2228286, 39, 2293870, 39, 2359352, 39, 2359376, 39, 2424894, 39, 2490478, 39, 2555960, 39, 2555984, 39, 2621502, 39, 2687086, 39, 2752568, 39, 2752592, 39, 2818110, 39, 2883694, 39, 2949176, 39, 2949182, 39, 2949200, 39, 2949230, 39 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 364.378, 303.872 )
+texture = ExtResource( 5 )
+
+[node name="Key" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1169.31, 472.312 )
+
+[node name="Potion" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1196.87, 471.63 )
+fillLevel = 3
+
+[node name="Potion 2" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1208.86, 471.764 )
+color = 1
+
+[node name="Tellaport" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 1726.33, 303.332 )
+
+[node name="Door" parent="." instance=ExtResource( 9 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 1090.9, 455.817 )
+
+[node name="Door" parent="Door" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 192.945, -145.009 )
+state = 1
+
+[node name="Player" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 365.305, 312.324 )
+
+[node name="Skell" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 811.55, 180.027 )
+
+[node name="Skell 2" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 1185.65, 306.541 )
+
+[node name="Skell 3" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 1574.12, 306.503 )
+
+[node name="Skell 4" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 1665.86, 196.351 )
+
+[connection signal="DrinkGreen" from="Hud" to="Player" method="_on_Hud_DrinkGreen"]
+
+[connection signal="DrinkPurple" from="Hud" to="Player" method="_on_Hud_DrinkPurple"]
+
+[connection signal="DrinkRed" from="Hud" to="Player" method="_on_Hud_DrinkRed"]
+
+[connection signal="DrinkYellow" from="Hud" to="Player" method="_on_Hud_DrinkYellow"]
+
+[connection signal="key_pick_up" from="Key" to="Hud" method="_on_key_pick_up"]
+
+[connection signal="potion_pick_up" from="Potion" to="Hud" method="_on_Potion_potion_pick_up"]
+
+[connection signal="potion_pick_up" from="Potion 2" to="Hud" method="_on_Potion_potion_pick_up"]
+
+[connection signal="body_enter" from="Tellaport" to="Player" method="_on_Tellaport_body_enter"]
+
+[connection signal="use_key" from="Door/Door" to="Hud" method="_on_Door_use_key"]
+
+[connection signal="Health_Change" from="Player" to="Hud" method="_on_Player_Health_Change"]
+
+

@@ -18,12 +18,14 @@ onready var animSprite = get_node("AnimatedSprite")
 onready var tellaportTimmer = get_node("TellaportTimer")
 onready var camera = get_node("Camera2D")
 onready var powerUpTimer = get_node("PowerUpTimer")
+signal Health_Change
 
 func _ready():
 	set_fixed_process(true)
 	rayFloor.add_exception(self)
 	rayWall.add_exception(self)
 	fbHitBox.connect("body_enter",self,"_on_hit")
+	emit_signal("Health_Change", health)
 	pass
 
 func _fixed_process(delta):
@@ -31,7 +33,8 @@ func _fixed_process(delta):
 	var right = Input.is_action_pressed("p_right")
 	var jump = Input.is_action_pressed("p_jump")
 	
-	if health <=0 or get_pos().y > camera.get_pos().y + 800:
+	if health <= 0 or get_pos().y > camera.get_pos().y + 800:
+		main.inv = [0,0,0,0]
 		get_tree().reload_current_scene()
 	
 	onGround = rayFloor.is_colliding() or rayFloor1.is_colliding()
@@ -84,7 +87,6 @@ func _fixed_process(delta):
 	if animation != state:
 		anim.play(state)
 
-
 func gravity(delta):
 	vel.y += GRAVITY * delta
 
@@ -97,18 +99,12 @@ func flip(left):
 func _on_hit(body):
 	if body.is_in_group("BadGuy"):
 		print("ouch")
+		health -= 25
+		emit_signal("Health_Change", health)
 
 func _on_Potion_potion_pick_up(type):
 	print("add to inv ", type)
 	pass # replace with function body
-
-func _on_Hud_DrinkRed():
-	sprite.set_hidden(true)
-	animSprite.set_frame(0)
-	animSprite.set_hidden(false)
-	animSprite.play("DrinkRed")
-	state = "drinking"
-
 
 func _on_AnimatedSprite_finished():
 	animSprite.set_hidden(true)
@@ -131,8 +127,11 @@ func _on_AnimatedSprite_finished():
 		state = "idle"
 		powerUpTimer.start()
 	
-	pass # replace with function body
-
+	#do purple effects!
+	if animSprite.get_animation() == "DrinkPurple":
+		health += 25
+		emit_signal("Health_Change", health)
+		state = "idle"
 
 func _on_Tellaport_body_enter( body ):
 	if body.get_name() == "Player":
@@ -142,29 +141,30 @@ func _on_Tellaport_body_enter( body ):
 		sprite.set_hidden(true)
 	pass # replace with function body
 
-
 func _on_TellaportTimer_timeout():
 	get_tree().change_scene(main.get_next_level())
 	pass # replace with function body
-
-
-func _on_Hud_DrinkYellow():
-	sprite.set_hidden(true)
-	animSprite.set_frame(0)
-	animSprite.set_hidden(false)
-	animSprite.play("DrinkYellow")
-	state = "drinking"
-
 
 func _on_PowerUpTimer_timeout():
 	JUMP_SPEED = 170
 	WALK_SPEED = 10
 	pass # replace with function body
 
+func _on_Hud_DrinkRed():
+	drink("DrinkRed")
+
+func _on_Hud_DrinkYellow():
+	drink("DrinkYellow")
 
 func _on_Hud_DrinkGreen():
+	drink("DrinkGreen")
+
+func _on_Hud_DrinkPurple():
+	drink("DrinkPurple")
+
+func drink(animation):
 	sprite.set_hidden(true)
 	animSprite.set_frame(0)
 	animSprite.set_hidden(false)
-	animSprite.play("DrinkGreen")
+	animSprite.play(animation)
 	state = "drinking"

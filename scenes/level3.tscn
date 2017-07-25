@@ -130,10 +130,16 @@ transform/pos = Vector2( 364.795, 310.652 )
 
 [connection signal="DrinkGreen" from="Hud" to="Player" method="_on_Hud_DrinkGreen"]
 
+[connection signal="DrinkPurple" from="Hud" to="Player" method="_on_Hud_DrinkPurple"]
+
 [connection signal="DrinkRed" from="Hud" to="Player" method="_on_Hud_DrinkRed"]
+
+[connection signal="DrinkYellow" from="Hud" to="Player" method="_on_Hud_DrinkYellow"]
 
 [connection signal="body_enter" from="Tellaport" to="Player" method="_on_Tellaport_body_enter"]
 
 [connection signal="potion_pick_up" from="Potion" to="Hud" method="_on_Potion_potion_pick_up"]
+
+[connection signal="Health_Change" from="Player" to="Hud" method="_on_Player_Health_Change"]
 
 

@@ -12,14 +12,14 @@ func _ready():
 
 func _process(delta):
 	if leftRay.is_colliding():
-		if state == 1:
+		if state == 1 and leftRay.get_collider().get_name() == "Player":
 			emit_signal("use_key",self)
 		if state == 0:
 			state = 2
 			animSpr.play("OpenRight")
 			doorSound.play("door")
 	if rightRay.is_colliding():
-		if state == 1:
+		if state == 1 and rightRay.get_collider().get_name() == "Player":
 			emit_signal("use_key",self)
 		if state == 0:
 			state = 2
