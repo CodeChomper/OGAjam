@@ -373,27 +373,41 @@ max_lines_visible = -1
 
 [node name="Heart1" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( 762, 562 )
+transform/pos = Vector2( 762, 578 )
 frames = SubResource( 2 )
 animation = "Red"
 
 [node name="Heart2" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( 832, 562 )
+transform/pos = Vector2( 832, 578 )
 frames = SubResource( 2 )
 animation = "Red"
 
 [node name="Heart3" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( 912, 562 )
+transform/pos = Vector2( 912, 578 )
 frames = SubResource( 2 )
 animation = "Red"
 
 [node name="Heart4" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( 982, 562 )
+transform/pos = Vector2( 982, 578 )
 frames = SubResource( 2 )
-animation = "Grey"
+animation = "Red"
+
+[node name="ScoreLabel" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 750.0
+margin/top = 538.0
+margin/right = 790.0
+margin/bottom = 552.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="pressed" from="RedButton" to="." method="_on_button_pressed" binds= [ 2 ]]
 

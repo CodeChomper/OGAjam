@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scripts/LevelStart.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Hud.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/scifi_platform_BG1.tex" type="Texture" id=3]
 [ext_resource path="res://tilesets/levelTilesAll.tres" type="TileSet" id=4]
 [ext_resource path="res://images/Tellaport.png" type="Texture" id=5]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Potion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Potion.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Tellaport.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=10]
 
 [node name="level1" type="Node"]
 
@@ -89,22 +92,41 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 1376276, 9, 1376279, 9, 1376282, 9, 1376285, 9, 1376288, 9, 1376291, 9 )
+tile_data = IntArray( 1376276, 9, 1376279, 9, 1376282, 9, 1376285, 9, 1376288, 9, 1376291, 9, 1376294, 39, 1572902, 39, 1769510, 39, 1966118, 39, 2162726, 39, 2359334, 39, 2555942, 39, 2752550, 39, 2949158, 39 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( 364.378, 303.872 )
 texture = ExtResource( 5 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 364.795, 310.652 )
-
-[node name="Potion" parent="." instance=ExtResource( 7 )]
+[node name="Potion" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 409.579, 327.801 )
 fillLevel = 3
 color = 2
+
+[node name="Key" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 460.592, 326.2 )
+
+[node name="Door" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 482.793, 310.243 )
+state = 1
+
+[node name="Potion 2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 433.93, 326.996 )
+fillLevel = 3
+color = 1
+
+[node name="Tellaport" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 526.952, 303.4 )
+
+[node name="Player" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 364.795, 310.652 )
 
 [connection signal="DrinkGreen" from="Hud" to="Player" method="_on_Hud_DrinkGreen"]
 
@@ -114,8 +136,14 @@ color = 2
 
 [connection signal="DrinkYellow" from="Hud" to="Player" method="_on_Hud_DrinkYellow"]
 
-[connection signal="Health_Change" from="Player" to="Hud" method="_on_Player_Health_Change"]
-
 [connection signal="potion_pick_up" from="Potion" to="Hud" method="_on_Potion_potion_pick_up"]
+
+[connection signal="key_pick_up" from="Key" to="." method="_on_key_pick_up"]
+
+[connection signal="potion_pick_up" from="Potion 2" to="Hud" method="_on_Potion_potion_pick_up"]
+
+[connection signal="body_enter" from="Tellaport" to="Player" method="_on_Tellaport_body_enter"]
+
+[connection signal="Health_Change" from="Player" to="Hud" method="_on_Player_Health_Change"]
 
 

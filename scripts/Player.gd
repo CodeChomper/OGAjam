@@ -13,7 +13,6 @@ export var GRAVITY = 500
 onready var facingLeft = false
 onready var state = "idle"
 onready var anim = get_node("AnimationPlayer")
-onready var health = 100
 onready var animSprite = get_node("AnimatedSprite")
 onready var tellaportTimmer = get_node("TellaportTimer")
 onready var camera = get_node("Camera2D")
@@ -25,7 +24,7 @@ func _ready():
 	rayFloor.add_exception(self)
 	rayWall.add_exception(self)
 	fbHitBox.connect("body_enter",self,"_on_hit")
-	emit_signal("Health_Change", health)
+	emit_signal("Health_Change", main.health)
 	pass
 
 func _fixed_process(delta):
@@ -33,19 +32,22 @@ func _fixed_process(delta):
 	var right = Input.is_action_pressed("p_right")
 	var jump = Input.is_action_pressed("p_jump")
 	
-	if health <= 0 or get_pos().y > camera.get_pos().y + 800:
+	if main.health <= 0 or get_pos().y > camera.get_pos().y + 800:
 		main.inv = [0,0,0,0]
+		main.times_died += 1
 		get_tree().reload_current_scene()
 	
 	onGround = rayFloor.is_colliding() or rayFloor1.is_colliding()
 	
 	if rayFloor.is_colliding():
-		if rayFloor.get_collider().is_in_group("BadGuy"):
+		var obj = rayFloor.get_collider()
+		if obj.is_in_group("BadGuy") and obj.state != "dead":
 			print("steped on head")
 			rayFloor.get_collider().health = 0
 	
 	if rayFloor1.is_colliding():
-		if rayFloor1.get_collider().is_in_group("BadGuy"):
+		var obj = rayFloor1.get_collider()
+		if rayFloor1.get_collider().is_in_group("BadGuy") and obj.state != "dead":
 			print("steped on head")
 			rayFloor1.get_collider().health = 0
 	
@@ -97,10 +99,10 @@ func flip(left):
 	set_scale(s)
 
 func _on_hit(body):
-	if body.is_in_group("BadGuy"):
+	if body.is_in_group("BadGuy") and body.state != "dead":
 		print("ouch")
-		health -= 25
-		emit_signal("Health_Change", health)
+		main.health -= 25
+		emit_signal("Health_Change", main.health)
 
 func _on_Potion_potion_pick_up(type):
 	print("add to inv ", type)
@@ -129,8 +131,8 @@ func _on_AnimatedSprite_finished():
 	
 	#do purple effects!
 	if animSprite.get_animation() == "DrinkPurple":
-		health += 25
-		emit_signal("Health_Change", health)
+		main.health += 25
+		emit_signal("Health_Change", main.health)
 		state = "idle"
 
 func _on_Tellaport_body_enter( body ):

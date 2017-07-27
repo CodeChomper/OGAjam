@@ -6,6 +6,9 @@ onready var rayForward = get_node("rayForward")
 onready var idleTimer = get_node("IdleTimer")
 onready var anim = get_node("AnimatedSprite")
 onready var sfx = get_node("SamplePlayer")
+onready var cs = get_node("CollisionShape2D")
+onready var respawnTimer = get_node("RespawnTimer")
+
 var health = 100
 
 var WALK_SPEED = 50
@@ -24,11 +27,14 @@ func _ready():
 func _fixed_process(delta):
 	if health <= 0 and state != "dead":
 		state = "dead"
-		clear_shapes()
+		#clear_shapes()
 		anim.play("Dead")
 		sfx.play("Die")
+		main.skells_killed += 1
+		respawnTimer.start()
 	
 	if state == "dead":
+		cs.set_scale(Vector2(0.001,0.001))
 		return
 	
 	vel.y += GRAV * delta
@@ -64,4 +70,12 @@ func _fixed_process(delta):
 func _on_IdleTimer_timeout():
 	state = "run"
 	idleTimer.stop()
+	pass # replace with function body
+
+
+func _on_RespawnTimer_timeout():
+	state = "idle"
+	health = 100
+	idleTimer.start()
+	cs.set_scale(Vector2(1,1))
 	pass # replace with function body

@@ -1,0 +1,168 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://scripts/LevelStart.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Hud.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/scifi_platform_BG1.tex" type="Texture" id=3]
+[ext_resource path="res://tilesets/levelTilesAll.tres" type="TileSet" id=4]
+[ext_resource path="res://images/Tellaport.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Skell.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Potion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Key.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Tellaport.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=11]
+
+[node name="level1" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="Hud" parent="." instance=ExtResource( 2 )]
+
+offset = Vector2( 0, -800 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+visibility/visible = false
+transform/pos = Vector2( 32, 0 )
+motion/scale = Vector2( 0.5, 0 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureFrame" type="TextureFrame" parent="ParallaxBackground/ParallaxLayer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 1
+margin/left = -427.0
+margin/top = -145.0
+margin/right = 3317.0
+margin/bottom = 1055.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="BG" type="TileMap" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 48, 48 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -21, 0, 21, 11, 22, 12, 23, 10, 24, 12, 25, 11, 26, 5, 27, 6, 28, 5, 29, 5, 65557, 14, 65558, 14, 65559, 14, 65560, 14, 65561, 14, 65562, 40, 65563, 40, 65564, 6, 65565, 40, 131093, 14, 131094, 14, 131095, 14, 131096, 14, 131097, 14, 131098, 40, 131099, 40, 131100, 40, 131101, 40, 196629, 40, 196630, 40, 196631, 40, 196632, 40, 196633, 40, 196634, 40, 196635, 40, 196636, 40, 196637, 40, 262165, 40, 262166, 40, 262167, 40, 262168, 40, 262169, 40, 262170, 40, 262171, 40, 262172, 40, 262173, 40, 327686, 6, 327687, 5, 327688, 5, 327689, 6, 327690, 5, 327691, 5, 327701, 40, 327702, 40, 327703, 40, 327704, 40, 327705, 40, 327706, 40, 327707, 40, 327708, 40, 327709, 40, 393222, 7, 393223, 7, 393224, 8, 393225, 7, 393226, 7, 393227, 8, 393237, 5, 393238, 5, 393239, 5, 393240, 5, 393241, 5, 393242, 40, 393243, 40, 393244, 40, 393245, 40, 458758, 40, 458759, 40, 458760, 40, 458761, 40, 458762, 40, 458763, 40, 458773, 7, 458774, 7, 458775, 7, 458776, 7, 458777, 7, 458778, 40, 458779, 40, 458780, 40, 458781, 40, 524294, 40, 524295, 40, 524296, 40, 524297, 40, 524298, 40, 524299, 40, 524302, 40, 524303, 40, 524304, 40, 524305, 40, 524306, 40, 524309, 40, 524310, 40, 524311, 40, 524312, 40, 524313, 40, 524314, 40, 524315, 40, 524316, 40, 524317, 40, 589830, 40, 589831, 40, 589832, 40, 589833, 40, 589834, 40, 589835, 40, 589838, 40, 589839, 40, 589840, 40, 589841, 40, 589842, 40, 589845, 40, 589846, 40, 589847, 40, 589848, 40, 589849, 40, 589850, 40, 589851, 40, 589852, 40, 589853, 40, 655366, 40, 655367, 40, 655368, 40, 655369, 40, 655370, 40, 655371, 40, 655374, 40, 655375, 40, 655376, 40, 655377, 40, 655378, 40, 655381, 40, 655382, 40, 655383, 40, 655384, 40, 655385, 40, 655386, 40, 655387, 40, 655388, 40, 655389, 40, 720902, 40, 720903, 40, 720904, 40, 720905, 40, 720906, 40, 720907, 40, 720910, 40, 720911, 40, 720912, 40, 720913, 40, 720914, 40, 720917, 40, 720918, 40, 720919, 40, 720920, 40, 720921, 40, 720922, 40, 720923, 40, 720924, 40, 720925, 40, 786438, 40, 786439, 40, 786440, 40, 786441, 40, 786442, 40, 786443, 40, 786446, 40, 786447, 40, 786448, 40, 786449, 40, 786450, 40, 786453, 40, 786454, 40, 786455, 40, 786456, 40, 786457, 40, 786458, 40, 786459, 40, 786460, 40, 786461, 40, 851974, 40, 851975, 40, 851976, 40, 851977, 40, 851978, 40, 851979, 40, 851982, 40, 851983, 40, 851984, 40, 851985, 40, 851986, 40, 851989, 40, 851990, 40, 851991, 40, 851992, 40, 851993, 40, 851994, 40, 851995, 40, 851996, 40, 851997, 40, 917510, 40, 917511, 40, 917512, 40, 917513, 40, 917514, 40, 917515, 40, 917518, 40, 917519, 40, 917520, 40, 917521, 40, 917522, 40, 917525, 40, 917526, 40, 917527, 40, 917528, 40, 917529, 40, 917530, 40, 917531, 40, 917532, 40, 917533, 40, 983046, 40, 983047, 40, 983048, 40, 983049, 40, 983050, 40, 983051, 40, 983054, 40, 983055, 40, 983056, 40, 983057, 40, 983058, 40, 983061, 40, 983062, 40, 983063, 40, 983064, 40, 983065, 40, 983066, 40, 983067, 40, 983068, 40, 983069, 40 )
+
+[node name="MidGround" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -65471, 27, -65468, 27, -65465, 27, -65462, 27, -65459, 27, -65456, 9, -65453, 9, -65450, 9, -65447, 9, -65444, 39, 80, 39, 131152, 39, 131164, 39, 327772, 39, 524353, 9, 524356, 9, 524359, 9, 524362, 9, 524365, 9, 524368, 9, 524371, 9, 524374, 9, 524377, 9, 524380, 39, 589889, 39, 720961, 39, 720988, 39, 917524, 9, 917527, 9, 917530, 9, 917533, 9, 917536, 9, 917539, 9, 917569, 39, 917596, 39, 983060, 39, 1114177, 9, 1114180, 9, 1114183, 9, 1114186, 9, 1114189, 9, 1114204, 39, 1179668, 39, 1179728, 39, 1310812, 39, 1376276, 9, 1376279, 9, 1376282, 9, 1376285, 9, 1376288, 9, 1376291, 9, 1376294, 39, 1376336, 39, 1441812, 39, 1507371, 9, 1507374, 9, 1507377, 9, 1507380, 9, 1507383, 9, 1507386, 3, 1507387, 39, 1507420, 39, 1572902, 39, 1572908, 39, 1572928, 4, 1572929, 9, 1572932, 9, 1572935, 9, 1572938, 9, 1572941, 9, 1638420, 39, 1638465, 39, 1703995, 39, 1704028, 39, 1769510, 39, 1769516, 39, 1835028, 39, 1835073, 39, 1900603, 39, 1900636, 39, 1966118, 39, 1966124, 39, 2031636, 39, 2031681, 39, 2097211, 39, 2097244, 39, 2162726, 39, 2162732, 39, 2228244, 39, 2228289, 39, 2293819, 39, 2293852, 39, 2359334, 39, 2359340, 39, 2424852, 39, 2424897, 39, 2490427, 39, 2490460, 39, 2555942, 39, 2555948, 39, 2621460, 39, 2621505, 39, 2687035, 39, 2687068, 39, 2752550, 39, 2752556, 39, 2818068, 39, 2818113, 39, 2883643, 39, 2883676, 39, 2949158, 39, 2949164, 39, 2949179, 39, 2949185, 39 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 364.378, 303.872 )
+texture = ExtResource( 5 )
+
+[node name="Skell" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 905.783, 341.909 )
+
+[node name="Potion" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 409.579, 327.801 )
+fillLevel = 3
+color = 2
+
+[node name="Skell 2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1200.53, 101.159 )
+
+[node name="Key" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 1204.5, 374.716 )
+
+[node name="Skell 3" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1139.5, 104.899 )
+
+[node name="Skell 4" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1089.86, 103.997 )
+
+[node name="Door" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 1283.03, 103.566 )
+state = 1
+
+[node name="Potion 2" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 937.191, 359.856 )
+fillLevel = 3
+color = 1
+
+[node name="Tellaport" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 1433.94, 95.9424 )
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 364.795, 310.652 )
+
+[connection signal="DrinkGreen" from="Hud" to="Player" method="_on_Hud_DrinkGreen"]
+
+[connection signal="DrinkPurple" from="Hud" to="Player" method="_on_Hud_DrinkPurple"]
+
+[connection signal="DrinkRed" from="Hud" to="Player" method="_on_Hud_DrinkRed"]
+
+[connection signal="DrinkYellow" from="Hud" to="Player" method="_on_Hud_DrinkYellow"]
+
+[connection signal="potion_pick_up" from="Potion" to="Hud" method="_on_Potion_potion_pick_up"]
+
+[connection signal="key_pick_up" from="Key" to="Hud" method="_on_key_pick_up"]
+
+[connection signal="use_key" from="Door" to="Hud" method="_on_Door_use_key"]
+
+[connection signal="potion_pick_up" from="Potion 2" to="Hud" method="_on_Potion_potion_pick_up"]
+
+[connection signal="body_enter" from="Tellaport" to="Player" method="_on_Tellaport_body_enter"]
+
+[connection signal="Health_Change" from="Player" to="Hud" method="_on_Player_Health_Change"]
+
+

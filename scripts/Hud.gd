@@ -10,6 +10,7 @@ onready var heart1 = get_node("Heart1")
 onready var heart2 = get_node("Heart2")
 onready var heart3 = get_node("Heart3")
 onready var heart4 = get_node("Heart4")
+onready var scoreLabel = get_node("ScoreLabel")
 
 signal DrinkGreen
 signal DrinkYellow
@@ -30,9 +31,12 @@ func _process(delta):
 	else:
 		pTimeLeft = 0
 	powerUpTimeLeft.set_text(str(round(pTimeLeft)))
+	
+	scoreLabel.set_text("Score: " + str((main.skells_killed * 5) + (main.times_died * -10) + (main.potions_picked_up * 2) + (main.keys_found * 5)))
 
 func _on_Potion_potion_pick_up(type):
 	main.inv[type] += 1
+	main.potions_picked_up += 1
 	update_labels()
 	sfx.play("bottle")
 	pass # replace with function body
@@ -41,6 +45,8 @@ func update_labels():
 	for i in range(labels.size()):
 		labels[i].set_text(str(main.inv[i]))
 	keyLabel.set_text(str(keys))
+	
+	
 
 func _input_event(viewport, event, shape_idx):
 	#event = make_input_local(event)
@@ -63,6 +69,7 @@ func _on_button_pressed(type):
 		print("Red")
 		emit_signal("DrinkRed")
 		main.inv[type] -=1
+		main.times_died += 1
 		potionSoundTimer.start()
 	elif type == 3 and main.inv[type] > 0:
 		print("Purple")
@@ -81,6 +88,7 @@ func _on_button_pressed(type):
 
 func _on_key_pick_up():
 	keys += 1
+	main.keys_found += 1
 	update_labels()
 	pass # replace with function body
 
@@ -121,4 +129,4 @@ func _on_Player_Health_Change(health):
 		heart3.play("Grey")
 		heart4.play("Grey")
 	else:
-		print("no change")
+		return
