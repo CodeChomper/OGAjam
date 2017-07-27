@@ -1,0 +1,218 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://scripts/LevelStart.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Hud.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/end.gd" type="Script" id=3]
+[ext_resource path="res://textures/scifi_platform_BG1.tex" type="Texture" id=4]
+[ext_resource path="res://tilesets/levelTilesAll.tres" type="TileSet" id=5]
+[ext_resource path="res://images/Tellaport.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
+
+[node name="level1" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="Hud" parent="." instance=ExtResource( 2 )]
+
+[node name="Label 3" type="Label" parent="Hud"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 15.0
+margin/top = 15.0
+margin/right = 132.0
+margin/bottom = 46.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Thanks For Playing"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = ExtResource( 3 )
+
+[node name="DeathsLabel" type="Label" parent="Hud/Label 3"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 24.0
+margin/right = 40.0
+margin/bottom = 38.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Label"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="SkellsLabel" type="Label" parent="Hud/Label 3"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 48.0
+margin/right = 40.0
+margin/bottom = 62.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Label"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="PotionsLabel" type="Label" parent="Hud/Label 3"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 72.0
+margin/right = 40.0
+margin/bottom = 86.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Label"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="KeysLabel" type="Label" parent="Hud/Label 3"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 96.0
+margin/right = 40.0
+margin/bottom = 110.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Label"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Button" type="Button" parent="Hud/Label 3"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 185.0
+margin/top = 201.0
+margin/right = 267.0
+margin/bottom = 221.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Replay 25¢"
+flat = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+visibility/visible = false
+transform/pos = Vector2( 32, 0 )
+motion/scale = Vector2( 0.5, 0 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureFrame" type="TextureFrame" parent="ParallaxBackground/ParallaxLayer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 1
+margin/left = -427.0
+margin/top = -145.0
+margin/right = 3317.0
+margin/bottom = 1055.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+
+[node name="BG" type="TileMap" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+mode = 0
+tile_set = ExtResource( 5 )
+cell/size = Vector2( 48, 48 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -21, 0, 458758, 40, 458759, 40, 458760, 40, 458761, 40, 458762, 40, 458763, 40, 524294, 40, 524295, 40, 524296, 40, 524297, 40, 524298, 40, 524299, 40, 589830, 40, 589831, 40, 589832, 40, 589833, 40, 589834, 40, 589835, 40, 655366, 40, 655367, 40, 655368, 40, 655369, 40, 655370, 40, 655371, 40, 720902, 40, 720903, 40, 720904, 40, 720905, 40, 720906, 40, 720907, 40, 786438, 40, 786439, 40, 786440, 40, 786441, 40, 786442, 40, 786443, 40, 851974, 40, 851975, 40, 851976, 40, 851977, 40, 851978, 40, 851979, 40, 917510, 40, 917511, 40, 917512, 40, 917513, 40, 917514, 40, 917515, 40, 983046, 40, 983047, 40, 983048, 40, 983049, 40, 983050, 40, 983051, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MidGround" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 5 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 1376276, 9, 1376279, 9, 1376282, 9, 1376285, 9, 1376288, 9, 1376291, 9, 1376294, 39, 1572902, 39, 1769510, 39, 1966118, 39, 2162726, 39, 2359334, 39, 2555942, 39, 2752550, 39, 2949158, 39 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 463.376, 303.384 )
+texture = ExtResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 464.768, 311.14 )
+
+[connection signal="DrinkGreen" from="Hud" to="Player" method="_on_Hud_DrinkGreen"]
+
+[connection signal="DrinkPurple" from="Hud" to="Player" method="_on_Hud_DrinkPurple"]
+
+[connection signal="DrinkRed" from="Hud" to="Player" method="_on_Hud_DrinkRed"]
+
+[connection signal="DrinkYellow" from="Hud" to="Player" method="_on_Hud_DrinkYellow"]
+
+[connection signal="pressed" from="Hud/Label 3/Button" to="Hud/Label 3" method="_on_Button_pressed"]
+
+[connection signal="Health_Change" from="Player" to="Hud" method="_on_Player_Health_Change"]
+
+

@@ -1,5 +1,5 @@
 extends Node
-var levels = ["scenes/level1.tscn","scenes/level2.tscn","scenes/level3.tscn","scenes/level4.tscn","scenes/level5.tscn","scenes/level6.tscn"]
+var levels = ["scenes/level1.tscn","scenes/level2.tscn","scenes/level3.tscn","scenes/level4.tscn","scenes/level5.tscn","scenes/level6.tscn","scenes/endLevel.tscn"]
 var curLevel = 0
 var inv = [0,0,0,0]
 var health = 100
