@@ -17,6 +17,10 @@ onready var animSprite = get_node("AnimatedSprite")
 onready var tellaportTimmer = get_node("TellaportTimer")
 onready var camera = get_node("Camera2D")
 onready var powerUpTimer = get_node("PowerUpTimer")
+onready var sfx = get_node("SamplePlayer1")
+onready var imuneTimer = get_node("ImuneTimer")
+var imune = false
+
 signal Health_Change
 
 func _ready():
@@ -99,9 +103,16 @@ func flip(left):
 	set_scale(s)
 
 func _on_hit(body):
-	if body.is_in_group("BadGuy") and body.state != "dead":
+	if body.is_in_group("BadGuy") and body.state != "dead" and imune == false:
 		print("ouch")
 		main.health -= 25
+		if facingLeft:
+			vel.x += 200
+		else:
+			vel.x -= 200
+		imune = true
+		imuneTimer.start()
+		sfx.play("hurt")
 		emit_signal("Health_Change", main.health)
 
 func _on_Potion_potion_pick_up(type):
@@ -170,3 +181,8 @@ func drink(animation):
 	animSprite.set_hidden(false)
 	animSprite.play(animation)
 	state = "drinking"
+
+
+func _on_ImuneTimer_timeout():
+	imune = false
+	pass # replace with function body
